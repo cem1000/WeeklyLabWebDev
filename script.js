@@ -1,4 +1,14 @@
-const numbers = [10, 20, 30, 40, 50];
+const arrayLength = 4;
+
+function generateNumbers() {
+    const numbers = [];
+    for (let i = 0; i < arrayLength; i++) {
+        numbers[i] = Math.floor(Math.random() * 100) + 1;
+    }
+    return numbers;
+}
+
+let numbers = generateNumbers();
 
 function calculateSum(arrayOfNumbers) {
     let sum = 0;
@@ -31,9 +41,20 @@ function displayArray() {
     arrayContainer.innerHTML = `Our numbers are: ${numbers}`;
 }
 
+function clearDisplay() {
+    const resultsContainer = document.getElementById("array-results");
+    const arrayContainer = document.getElementById("array-numbers");
+    resultsContainer.innerHTML = '';
+    arrayContainer.innerHTML = '';
+}
+
 function runCalculations() {
+    numbers = generateNumbers();
+    
     const sum = calculateSum(numbers);
     const mean = calculateMean(numbers);
+    
+    clearDisplay();
     
     displayResults(sum, mean);
     displayArray();
